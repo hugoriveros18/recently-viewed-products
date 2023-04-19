@@ -1,0 +1,88 @@
+query ($productsId: [ID!]) {
+  productsByIdentifier(
+    field:id,
+    values: $productsId
+  ) {
+      brand
+      productId
+      productName
+      link
+      linkText
+      titleTag
+      items {
+        itemId
+        name
+        nameComplete
+        complementName
+        ean
+        variations {
+          name
+          values
+        }
+        referenceId {
+          Key
+          Value
+        }
+        measurementUnit
+        unitMultiplier
+        images {
+          cacheId
+          imageId
+          imageLabel
+          imageTag
+          imageUrl
+          imageText
+        }
+        sellers {
+          sellerId
+          sellerName
+          commertialOffer {
+            CacheVersionUsedToCallCheckout
+            discountHighlights {
+              name
+            }
+            Installments {
+              Value
+              InterestRate
+              TotalValuePlusInterestRate
+              NumberOfInstallments
+              Name
+              PaymentSystemName
+            }
+            Price
+            ListPrice
+            Tax
+            spotPrice
+            PriceWithoutDiscount
+            RewardValue
+            PriceValidUntil
+            AvailableQuantity
+          }
+        }
+      }
+      priceRange {
+        listPrice {
+          highPrice
+          lowPrice
+        }
+        sellingPrice {
+          highPrice
+          lowPrice
+        }
+      }
+      properties {
+        originalName
+        name
+        values
+      }
+      clusterHighlights {
+        id
+        name
+      }
+      productClusters {
+        id
+        name
+      }
+  }
+}
+

@@ -1,5 +1,8 @@
 {
-  "meta-tag": {
-    "component": "MetaTags"
+  "product-viewed-tracker": {
+    "component": "ProductViewedTracker"
+  },
+  "product-viewed-shelf": {
+    "component": "ProductViewedShelf"
   }
 }
