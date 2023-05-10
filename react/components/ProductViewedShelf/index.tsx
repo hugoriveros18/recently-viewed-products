@@ -53,6 +53,7 @@ const ProductViewedShelf = ({
 
   useEffect(() => {
     if(data) {
+      console.log('data',data)
       setProductsToRender(organizeProducts(dataLocalStorage, data.productsByIdentifier));
     }
   },[data])
@@ -79,14 +80,19 @@ const ProductViewedShelf = ({
 
   //JSX
   if (productsToRender.length > 2) {
-    return (
-      <div className={`${handles['recently-viewed__global-container']}`}>
-        <h3 className={`${handles['recently-viewed__title']}`}>{productShelfTitle}</h3>
-        <ProductListContext
-          products={productsToRender}
-        />
-      </div>
-    )
+    try {
+      return (
+        <div className={`${handles['recently-viewed__global-container']}`}>
+          <h3 className={`${handles['recently-viewed__title']}`}>{productShelfTitle}</h3>
+          <ProductListContext
+            products={productsToRender}
+          />
+        </div>
+      )
+    } catch (e) {
+      console.error(e);
+      return null;
+    }
   }
 
   return null;

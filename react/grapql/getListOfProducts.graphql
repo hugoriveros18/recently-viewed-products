@@ -26,7 +26,6 @@ query ($productsId: [ID!]) {
         measurementUnit
         unitMultiplier
         images {
-          cacheId
           imageId
           imageLabel
           imageTag
@@ -37,7 +36,6 @@ query ($productsId: [ID!]) {
           sellerId
           sellerName
           commertialOffer {
-            CacheVersionUsedToCallCheckout
             discountHighlights {
               name
             }
