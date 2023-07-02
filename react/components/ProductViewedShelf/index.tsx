@@ -53,7 +53,6 @@ const ProductViewedShelf = ({
 
   useEffect(() => {
     if(data) {
-      console.log('data',data)
       setProductsToRender(organizeProducts(dataLocalStorage, data.productsByIdentifier));
     }
   },[data])
@@ -65,34 +64,32 @@ const ProductViewedShelf = ({
 
     const mostRecentViewedProducts: any[] = JSON.parse(localeStorageItems).reverse();
     const productsOrganized: any[] = [];
-
-    for (let [index, productId] of mostRecentViewedProducts.entries()) {
-      if(index < maxItems) {
-        productsOrganized.push(productsMap.get(productId));
+    let count = 0;
+    for (let productId of mostRecentViewedProducts.entries()) {
+      if(count < maxItems) {
+        const newProducto = productsMap.get(productId[1]);
+        if(newProducto) {
+          productsOrganized.push(newProducto);
+          count++;
+        }
       } else {
         break;
       }
     }
-
     return productsOrganized;
   }
 
 
   //JSX
   if (productsToRender.length > 2) {
-    try {
-      return (
-        <div className={`${handles['recently-viewed__global-container']}`}>
-          <h3 className={`${handles['recently-viewed__title']}`}>{productShelfTitle}</h3>
-          <ProductListContext
-            products={productsToRender}
-          />
-        </div>
-      )
-    } catch (e) {
-      console.error(e);
-      return null;
-    }
+    return (
+      <div className={`${handles['recently-viewed__global-container']}`}>
+        <h3 className={`${handles['recently-viewed__title']}`}>{productShelfTitle}</h3>
+        <ProductListContext
+          products={productsToRender}
+        />
+      </div>
+    )
   }
 
   return null;

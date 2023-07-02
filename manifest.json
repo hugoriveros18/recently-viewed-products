@@ -1,7 +1,7 @@
 {
   "vendor": "panamericana",
   "name": "recently-viewed-products",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "title": "Recently Viewed Products",
   "description": "Shelf with recently viewed products",
   "builders": {
